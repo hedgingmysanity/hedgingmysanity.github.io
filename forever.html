@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date When?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+        .button:hover {
+            background-color: #ff1f63;
+        }
+        .moving:hover {
+            position: absolute;
+            left: calc(50% + (Math.random() * 200 - 100)px);
+            top: calc(50% + (Math.random() * 200 - 100)px);
+        }
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Date when? 💕</h1>
+        <div class="button-container">
+            <button id="today" class="button moving" onmouseover="moveButton('today')">Today 🌸</button>
+            <button id="tomorrow" class="button moving" onmouseover="moveButton('tomorrow')">Tomorrow 🌼</button>
+            <button id="forever" class="button" onclick="showConfetti()">Forever 💖</button>
+        </div>
+    </div>
+    <div class="confetti" id="confetti">🎉🎊💖💞💕</div>
+    <script>
+        function moveButton(id) {
+            let button = document.getElementById(id);
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 70);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function showConfetti() {
+            document.getElementById("confetti").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("confetti").style.display = "none";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
